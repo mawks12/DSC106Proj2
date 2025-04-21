@@ -1,0 +1,8 @@
+#+title: Project 2
+#+author: Martin Hawks
+
+* Setup :noexport:
+#+begin_src emacs-lisp :results none :exports none :noeval
+    (eval-after-load 'org
+        (add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images))
+#+end_src
