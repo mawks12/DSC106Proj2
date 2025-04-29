@@ -79,17 +79,17 @@ ax2.plot(resultYear.index, resultYear['fado_type_Force'] / byYear['last_name'], 
 filename = 'pigs.png'
 ax1.set_xlabel('Year', **fontconfig)
 ax1.set_ylabel('Complaints', **fontconfig)
-ax2.set_ylabel('Complaints due to force (relative)', **fontconfig)
+ax2.set_ylabel('Complaints due to force (normalized)', **fontconfig)
 ax2.set(ylim=(0, 0.66))
 ax1.set_title("NYPD's Forceful Action", **fontconfig, loc='left', y=1.05,)
 ax1.annotate(
-    "Reletive number of Force\ncomplaints decrease...",
+    "Amount of Force\ncomplaints decrease...",
     xy=(1984.5, 890),
     fontname='serif'
 )
 ax1.annotate(
-    "Just before total number of\ncomplaints surge upwards",
-    xy=(2002, 20),
+    "...just before total number of\ncomplaints surge upwards",
+    xy=(2001, 20),
     fontname='serif'
 )
 fig.suptitle('Less force leads to more complaints', x=0.365, y=0.92, alpha=0.5, **fontconfig)
