@@ -1,0 +1,11 @@
+#+title: Notes
+
+* Inbox
+** [2025-04-21 Mon 16:16] For misleading - use instense color scale to high middle values?
+** [2025-04-21 Mon 13:59] duplicate shield numbers? some are very high and lots are 0 for some reason...
+** [2025-04-21 Mon 13:57] correlation with complaint type and or demographics complaintant and board disposition
+** [2025-04-21 Mon 13:51] Gender correlations grouped by complaints?
+this field is voulentary and has the most missing data... move nans to not described?
+
+** [2025-04-21 Mon 13:48] data contact reason correlation with results?
+** [2025-04-21 Mon 13:44] comparing rank at incident and rank now could be interesting

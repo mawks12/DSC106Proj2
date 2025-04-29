@@ -70,29 +70,50 @@ filename
 [[file:stackedYearPlotForce.png]]
 *** Proportion of Force
 #+begin_src python :results file :session :exports results
-font = plt.font_manager.FontManager(family='serif')
+fontconfig = {'fontname':'serif'}
+filename = 'PreportionForce.png'
 fig, ax1 = plt.subplots()
 ax2 = ax1.twinx()
-ax1.plot(byYear.index, byYear['last_name'], label="Number of Complaints")
+ax1.plot(byYear.index, byYear['last_name'], label="Total Complaints")
 ax2.plot(resultYear.index, resultYear['fado_type_Force'] / byYear['last_name'], color='tab:red', label="Force Complaints")
-filename = 'ProportionForce.png'
-ax1.set_xlabel('Year')
-ax1.set_ylabel('Complaints')
-ax2.set_ylabel('Complaints due to force (preportion)')
-fig.legend()
+filename = 'pigs.png'
+ax1.set_xlabel('Year', **fontconfig)
+ax1.set_ylabel('Complaints', **fontconfig)
+ax2.set_ylabel('Complaints due to force (relative)', **fontconfig)
+ax2.set(ylim=(0, 0.66))
+ax1.set_title("NYPD's Forceful Action", **fontconfig, loc='left', y=1.05,)
+ax1.annotate(
+    "Reletive number of Force\ncomplaints decrease...",
+    xy=(1984.5, 890),
+    fontname='serif'
+)
+ax1.annotate(
+    "Just before total number of\ncomplaints surge upwards",
+    xy=(2002, 20),
+    fontname='serif'
+)
+fig.suptitle('Less force leads to more complaints', x=0.365, y=0.92, alpha=0.5, **fontconfig)
+fig.legend(prop={'family':'serif'})
 plt.savefig(filename)
 plt.close()
 filename
 #+end_src
 
 #+RESULTS:
-[[file:ProportionForce.png]]
+[[file:pigs.png]]
+
 ** Truthier Plots
 *** Stacked Plot for all Categories
 #+begin_src python :results file :session :exports results
-plt.stackplot(resultYear.index, resultYear['fado_type_Force'], resultYear['fado_type_Abuse of Authority'], resultYear['fado_type_Discourtesy'], resultYear['fado_type_Offensive Language'], labels=['Force Complaints', 'Abuse of Authority', 'Discourtesy', 'Offensive Language'])
+fig, ax = plt.subplots()
+fontconfig = {'fontname':'serif'}
+ax.stackplot(resultYear.index, resultYear['fado_type_Force'], resultYear['fado_type_Abuse of Authority'], resultYear['fado_type_Discourtesy'], resultYear['fado_type_Offensive Language'], labels=['Excessive Force', 'Abuse of Authority', 'Discourtesy', 'Offensive Language'])
 filename = 'StackedAll.png'
-plt.legend()
+ax.set_xlabel('Year', **fontconfig)
+ax.set_ylabel('Number of Complaints', **fontconfig)
+ax.set_title('Authoritative Abuse in the NYPD', loc='left', y=1.05, **fontconfig)
+fig.suptitle("A marked increace in Abuse of authority since 2000", x=0.465, y=0.92, alpha=0.5, **fontconfig)
+ax.legend(title='Complaint Category', title_fontproperties={'family':'serif'}, prop={'family':'serif'})
 plt.savefig(filename)
 plt.close()
 filename
